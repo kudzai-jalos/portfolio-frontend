@@ -1,13 +1,26 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Blinker&family=Darker+Grotesque&family=Josefin+Sans&family=Sen&display=swap');
+:root {
+  --color-primary:black;
+  --color-secondary:white;
+  --color-tertiary: rgb(38, 186, 206);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+body {
+  margin: 0;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  font-size: 18px;
+  font-family: "Blinker",sans-serif;
+  letter-spacing: 1.5px;
+  word-spacing: 1.5px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h2 {
+  font-size: 36px;
+  font-family: "Josefin Sans",sans-serif;
+  letter-spacing: 1px;
+}

@@ -1,0 +1,17 @@
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.form-control > input,
+.form-control > textarea {
+  margin-top: .5rem;
+  border-radius: 4px;
+  border: 2px solid var(--color-secondary);
+  background-color: transparent;
+}
+
+.form-control > textarea {
+  resize: none;
+}

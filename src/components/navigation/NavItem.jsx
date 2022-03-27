@@ -1,6 +1,7 @@
+import classes from "./NavItem.module.css"
 
 const NavItem = (props) => {
-  return <li>
+  return <li className={classes["nav-item"]}>
     {props.children}
   </li>
 }

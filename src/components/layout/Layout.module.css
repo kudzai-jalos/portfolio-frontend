@@ -1,0 +1,17 @@
+.main-container {
+  position: relative;
+}
+
+.main-container > header {
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+}
+
+.container {
+  width: 1440px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 8rem;
+  min-height: 1024px;
+}

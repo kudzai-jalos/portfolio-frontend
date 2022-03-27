@@ -1,0 +1,59 @@
+.container h2 {
+  text-align: center;
+}
+
+.projects {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.project {
+  width: 350px;
+  max-width: 100%;
+  margin: 1rem;
+  display: grid;
+  grid-template-areas: "img img" "body act";
+}
+
+.image-container {
+  grid-area: img;
+}
+
+.image-container > img {
+  display: inline-block;
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: -2px -2px 0 0 rgba(255, 255, 255, .5),
+    4px 4px 2px 0px rgba(0, 0, 0, 0.5);
+  min-height: 240px;
+}
+
+.body {
+  grid-area: body;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #c4c4c4;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: flex-end;
+  grid-area: act;
+}
+
+.actions > a {
+  color: #61dafb;
+  text-decoration: none;
+}

@@ -1,0 +1,12 @@
+.btn {
+  background-color: transparent;
+  border: 2px solid var(--color-secondary);
+  border-radius: 10px;
+  padding: .525rem 1.125rem;
+  transition: .4s ease-in-out;
+}
+
+.btn:hover, .btn:active {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
