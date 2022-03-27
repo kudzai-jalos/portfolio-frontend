@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Blinker&family=Darker+Grotesque&family=Josefin+Sans&family=Sen&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Blinker&family=Darker+Grotesque&family=Josefin+Sans&family=Sen&display=swap");
+
 :root {
-  --color-primary:black;
-  --color-secondary:white;
-  --color-tertiary: rgb(38, 186, 206);
+  --color-primary: black;
+  --color-secondary: white;
+  --color-tertiary: #26bace;
+  --color-tertiary-light: hsl(187, 69%, 70%);
 }
 
 body {
@@ -10,7 +12,7 @@ body {
   background-color: var(--color-primary);
   color: var(--color-secondary);
   font-size: 18px;
-  font-family: "Blinker",sans-serif;
+  font-family: "Blinker", sans-serif;
   letter-spacing: 1.5px;
   word-spacing: 1.5px;
 }
@@ -21,6 +23,21 @@ body {
 
 h2 {
   font-size: 36px;
-  font-family: "Josefin Sans",sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   letter-spacing: 1px;
+  text-align: center;
+}
+
+a {
+  color: var(--color-tertiary);
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: var(--color-tertiary-light);
+}
+
+svg {
+  fill: var(--color-secondary);
 }

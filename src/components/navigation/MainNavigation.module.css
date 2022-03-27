@@ -1,5 +1,6 @@
 .main-navigation {
   margin-top: 2.25rem;
+  padding-left: 10%;
 }
 
 .nav-items {
@@ -10,9 +11,9 @@
   /* justify-content: flex-end; */
   border-top-left-radius:20px ;
   border-bottom-left-radius:20px ;
-  margin-left: 25%;
+  /* margin-left: 20%; */
   /* justify-content: space-between; */
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   
 }
 
@@ -21,11 +22,12 @@
   font-size: .875rem;
   color: var(--color-secondary);
   text-decoration: none;
-  margin-left: 4rem;
+  margin: 0 1rem;
   /* transition: .4s ease-in-out; */
 }
 
 .nav-link:hover,
 .nav-link:active {
   font-weight: 700;
+  color: var(--color-secondary);
 }

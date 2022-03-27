@@ -1,0 +1,61 @@
+.container {
+  display: grid;
+  grid-template-areas: "t t t t"
+  "f f d d";
+  grid-gap: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("./milad-fakurian-ek7Y_iOl3UQ-unsplash.jpg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -100;
+  margin-left: 25%;
+}
+
+.container > h2 {
+  grid-area: t;
+  /* text-align: center; */
+}
+
+.contact-form {
+  grid-area: f;
+  border: 2px solid;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.contact-form > * {
+  margin-bottom: 1rem;
+}
+
+.contact-details {
+  grid-area: d;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+.detail {
+  display: flex;
+  margin-bottom: .5rem;
+}
+
+.detail p {
+  margin: 0;
+}
+
+.icon {
+  margin-right: 1rem;
+  grid-area: i;
+  width: 20px;
+}

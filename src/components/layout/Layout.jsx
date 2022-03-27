@@ -15,7 +15,7 @@ const Layout = (props)=>{
       <footer>
         {/* Contact details */}
         <ContactMe/>
-
+        {/* <p className={classes.copy}>Kudzai Jalos | Copyright &copy; {new Date().getFullYear()}</p> */}
       </footer>
     </div>
   )

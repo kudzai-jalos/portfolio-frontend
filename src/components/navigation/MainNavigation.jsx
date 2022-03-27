@@ -7,7 +7,7 @@ const MainNavigation = (props) => {
     <nav className={classes["main-navigation"]}>
       <ul className={classes["nav-items"]}>
         <NavItem>
-          <a className={classes["nav-link"]} href="#about-me">About me</a>
+          <a className={classes["nav-link"]} href="#about-me">About&nbsp;me</a>
         </NavItem>
         <NavItem>
           <a className={classes["nav-link"]} href="#projects">Projects</a>
@@ -19,7 +19,7 @@ const MainNavigation = (props) => {
           <a className={classes["nav-link"]} href="#certifications">Certifications</a>
         </NavItem>
         <NavItem>
-          <a className={`${classes["nav-link"]} ${btnClasses["btn"]}`} href="#contact-me">Contact me</a>
+          <a className={`${classes["nav-link"]} ${btnClasses["btn"]}`} href="#contact-me">Contact&nbsp;me</a>
         </NavItem>
       </ul>
     </nav>
