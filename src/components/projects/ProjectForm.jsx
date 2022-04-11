@@ -121,7 +121,7 @@ const ProjectForm = (props) => {
     event.preventDefault();
     // TODO validation
 
-    sendRequest("http://localhost:8000/admin/projects", {
+    sendRequest("https://kudzai-jalos-api.herokuapp.com/admin/projects", {
       method: props.isEditing ? "PUT" : "POST",
       headers: {
         "Content-Type": "application/json",

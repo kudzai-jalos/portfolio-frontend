@@ -21,7 +21,7 @@ const SkillItem = (props) => {
   }, [data, props.id, onDelete]);
 
   const handleDelete = async () => {
-    await sendRequest("http://localhost:8000/admin/skills/" + props.id, {
+    await sendRequest("https://kudzai-jalos-api.herokuapp.com/admin/skills/" + props.id, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + token,
