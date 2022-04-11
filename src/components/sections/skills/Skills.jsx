@@ -1,8 +1,5 @@
-import Card from "../../ui/Card";
 import classes from "./Skills.module.css";
 import layoutClasses from "../../layout/Layout.module.css";
-import useHttp from "../../../hooks/use-http";
-import { useEffect, useState } from "react";
 import SkillList from "../../skills/SkillList";
 
 const Skills = (props) => {

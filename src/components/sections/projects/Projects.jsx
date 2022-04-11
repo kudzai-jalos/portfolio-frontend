@@ -1,10 +1,5 @@
 import classes from "./Projects.module.css";
 import layoutClasses from "../../layout/Layout.module.css";
-import Card from "../../ui/Card";
-import useHttp from "../../../hooks/use-http";
-import { useEffect, useState } from "react";
-import ProjectItem from "../../projects/ProjectItem";
-import { NavLink } from "react-router-dom";
 import ProjectList from "../../projects/ProjectList";
 
 // const projectList = [

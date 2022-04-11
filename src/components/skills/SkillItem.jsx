@@ -4,10 +4,11 @@ import Card from "../ui/Card";
 import classes from "./SkillItem.module.css";
 import buttonClasses from "../ui/Button.module.css";
 import { useSelector } from "react-redux";
+import LoadingSpinner from "../ui/LoadingSpinner";
 
 const SkillItem = (props) => {
   const token = useSelector((state) => state.auth.token);
-  const { data, error, isLoading, sendRequest } = useHttp();
+  const { data,  isLoading, sendRequest } = useHttp();
   const isAdmin = props.isAdmin;
   const { tech } = props;
 
@@ -40,6 +41,7 @@ const SkillItem = (props) => {
           Delete
         </button>
       )}
+      {isLoading && <LoadingSpinner />}
     </Card>
   );
 };
