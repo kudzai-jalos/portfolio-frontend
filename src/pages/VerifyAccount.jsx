@@ -12,13 +12,13 @@ const VerifyAccount = () => {
   useEffect(() => {
     if (data) {
       navigate("/action/success", {
-        message: "Verifying account successful.",
+        state:{message: "Verifying account successful.",
         actions: [
           {
             label: "Go to login page",
             path: "/auth/login",
           },
-        ],
+        ]},
       });
     }
     if (error) {
