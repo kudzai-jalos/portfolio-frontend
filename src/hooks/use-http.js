@@ -44,7 +44,7 @@ const useHttp = () => {
       })
       .then((resData) => {
         setData(resData);
-        console.log(resData);
+        // console.log(resData);
         setIsLoading(false);
       })
       .catch((err) => {
