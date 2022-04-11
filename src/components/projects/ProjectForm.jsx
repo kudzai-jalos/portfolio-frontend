@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import useHttp from "../../hooks/use-http";
 import inputClasses from "../ui/Input.module.css";
 import buttonClasses from "../ui/Button.module.css";
@@ -13,6 +13,9 @@ const SET_DESCRIPTION = "SET_DESCRIPTION";
 const SET_IMAGE_URL = "SET_IMAGE_URL";
 const SET_GITHUB = "SET_GITHUB";
 const SET_LIVE_URL = "SET_LIVE_URL";
+
+const FETCH_PROJECT = "FETCH_PROJECT";
+const SUBMIT_PROJECT = "SUBMIT_PROJECT";
 
 const projectFormReducer = (state, action) => {
   switch (action.type) {
@@ -50,6 +53,7 @@ const ProjectForm = (props) => {
   const token = useSelector((state) => state.auth.token);
   const { sendRequest, data, error, isLoading } = useHttp();
   const navigate = useNavigate();
+  const [action, setAction] = useState(null);
 
   const [projectFormState, dispatch] = useReducer(projectFormReducer, {
     title: "",
@@ -59,9 +63,46 @@ const ProjectForm = (props) => {
     liveUrl: "",
   });
 
+  useEffect(() => {
+    if (props.isEditing) {
+      setAction(FETCH_PROJECT);
+      sendRequest(
+        "https://kudzai-jalos-api.herokuapp.com/projects/" + props.projectId
+      );
+    }
+  }, [props.projectId, props.isEditing, sendRequest]);
+
+  useEffect(() => {
+    if (data && action === FETCH_PROJECT) {
+      const { project } = data;
+
+      dispatch({
+        type: SET_TITLE,
+        payload: project.title,
+      });
+      dispatch({
+        type: SET_DESCRIPTION,
+        payload: project.description,
+      });
+      dispatch({
+        type: SET_GITHUB,
+        payload: project.github,
+      });
+      dispatch({
+        type: SET_IMAGE_URL,
+        payload: project.imageUrl,
+      });
+      dispatch({
+        type: SET_LIVE_URL,
+        payload: project.liveUrl,
+      });
+
+      setAction(null);
+    }
+  }, [action, data]);
   //console.log(projectFormState);
   useEffect(() => {
-    if (data) {
+    if (data && action === SUBMIT_PROJECT) {
       navigate("/action/success", {
         state: {
           message: `Project ${
@@ -80,7 +121,7 @@ const ProjectForm = (props) => {
         },
       });
     }
-  }, [data, navigate, props.isEditing]);
+  }, [action, data, navigate, props.isEditing]);
 
   const handleTitleChange = (event) => {
     dispatch({
@@ -120,15 +161,19 @@ const ProjectForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // TODO validation
-
-    sendRequest("https://kudzai-jalos-api.herokuapp.com/admin/projects", {
-      method: props.isEditing ? "PUT" : "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: projectFormState,
-    });
+    setAction(SUBMIT_PROJECT);
+    sendRequest(
+      "https://kudzai-jalos-api.herokuapp.com/admin/projects" +
+        (props.isEditing ? "/" + props.projectId : ""),
+      {
+        method: props.isEditing ? "PUT" : "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        body: projectFormState,
+      }
+    );
   };
 
   return (
@@ -191,9 +236,10 @@ const ProjectForm = (props) => {
         </div>
         <div className={`${inputClasses["form-actions"]} ${classes.actions}`}>
           <button className={`${buttonClasses.btn}`} type="submit">
-            {isLoading ? <LoadingSpinner /> : props.isEditing ? "Save" : "Add"}
+            {props.isEditing ? "Save" : "Add"}
           </button>
         </div>
+        {isLoading && <LoadingSpinner />}
       </form>
     </>
   );

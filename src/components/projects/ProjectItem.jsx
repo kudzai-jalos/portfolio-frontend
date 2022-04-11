@@ -34,7 +34,7 @@ const ProjectItem = (props) => {
   };
 
   const handleEdit = () => {
-    navigate("/admin/edit-project/:" + project._id, {
+    navigate("/admin/edit-project/" + project._id, {
       state: {
         project,
       },

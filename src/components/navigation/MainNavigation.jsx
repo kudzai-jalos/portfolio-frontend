@@ -9,7 +9,6 @@ import { CSSTransition } from "react-transition-group";
 
 const MainNavigation = (props) => {
   const [navShowing, setNavShowing] = useState(false);
-  const [shownFirstTime, setShownFirstTime] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,7 +27,6 @@ const MainNavigation = (props) => {
 
   const toggleNav = () => {
     //console.log("Toggling nav to", !navShowing);
-    setShownFirstTime(true);
     setNavShowing((state) => !state);
   };
 
@@ -64,13 +62,9 @@ const MainNavigation = (props) => {
         setNavShowing(false);
       }
     };
-    const handleResize = () => {
-      setShownFirstTime(false);
-    };
     if (navShowing) {
       document.addEventListener("click", hideNav);
       window.addEventListener("resize", hideNav);
-      window.addEventListener("resize", handleResize);
       //console.log("Add event listener");
     }
 
@@ -78,7 +72,6 @@ const MainNavigation = (props) => {
       // setShownFirstTime(false);
       document.removeEventListener("click", hideNav);
       window.removeEventListener("resize", hideNav);
-      window.removeEventListener("resize", handleResize);
     };
   }, [navShowing]);
   // //console.log("NAV showing", windowWidth >= 768 || navShowing);
@@ -92,7 +85,7 @@ const MainNavigation = (props) => {
         </div>
       )}
       <CSSTransition
-        in={windowWidth >= 768 || (navShowing && shownFirstTime)}
+        in={windowWidth >= 768 || navShowing}
         timeout={20000}
         classNames={{
           enter: classes["dropdown-enter"],

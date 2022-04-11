@@ -10,15 +10,25 @@ const VerifyAccount = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = "Verifying account";
+
+    return () => {
+      window.scrollTo(0, 0);
+    };
+  }, []);
+
+  useEffect(() => {
     if (data) {
       navigate("/action/success", {
-        state:{message: "Verifying account successful.",
-        actions: [
-          {
-            label: "Go to login page",
-            path: "/auth/login",
-          },
-        ]},
+        state: {
+          message: "Verifying account successful.",
+          actions: [
+            {
+              label: "Go to login page",
+              path: "/auth/login",
+            },
+          ],
+        },
       });
     }
     if (error) {

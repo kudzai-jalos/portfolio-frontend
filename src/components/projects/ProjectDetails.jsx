@@ -15,6 +15,14 @@ const ProjectDetails = (props) => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    document.title = project?.title || "Project details";
+
+    return () => {
+      window.scrollTo(0, 0);
+    };
+  }, [project?.title]);
+
+  useEffect(() => {
     if (error && isDeleting) {
       setIsDeleting(false);
     }
@@ -55,7 +63,7 @@ const ProjectDetails = (props) => {
   };
 
   const handleEdit = () => {
-    navigate("/admin/edit-project/:" + project._id, {
+    navigate("/admin/edit-project/" + project._id, {
       state: {
         project,
       },
