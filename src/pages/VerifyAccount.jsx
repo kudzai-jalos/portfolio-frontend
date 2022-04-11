@@ -1,9 +1,8 @@
 import { useEffect } from "react";
-import Layout from "../components/layout/Layout";
 import useHttp from "../hooks/use-http";
 import layoutClasses from "../components/layout/Layout.module.css";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const VerifyAccount = () => {
   const { sendRequest, data, error } = useHttp();
@@ -33,7 +32,7 @@ const VerifyAccount = () => {
         ],
       });
     }
-  }, []);
+  }, [data, error, navigate]);
 
   useEffect(() => {
     sendRequest("http://localhost:8000/auth/accounts/verify", {

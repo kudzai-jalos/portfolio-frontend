@@ -5,10 +5,11 @@ import classes from "./ProjectItem.module.css";
 import buttonClasses from "../ui/Button.module.css";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import LoadingSpinner from "../ui/LoadingSpinner";
 
 const ProjectItem = (props) => {
   const token = useSelector(state=>state.auth.token);
-  const { data, error, isLoading, sendRequest } = useHttp();
+  const { data, isLoading, sendRequest } = useHttp();
   const navigate = useNavigate();
 
   const { project } = props;
@@ -63,7 +64,9 @@ const ProjectItem = (props) => {
         ) : (
           <NavLink className={buttonClasses.btn} to={"/projects/"+project._id}>More Details</NavLink>
         )}
-      </div>
+      </div> 
+      {isLoading &&
+        <LoadingSpinner />}
     </Card>
   );
 };

@@ -4,9 +4,10 @@ import inputClasses from "../../ui/Input.module.css";
 import btnClasses from "../../ui/Button.module.css";
 
 import useHttp from "../../../hooks/use-http";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import Errors from "../../ui/Errors";
 import LoadingSpinner from "../../ui/LoadingSpinner";
+import { useNavigate } from "react-router-dom";
 
 const SET_NAME = "SET_NAME";
 const SET_EMAIL = "SET_EMAIL";
@@ -41,6 +42,22 @@ const ContactMe = (props) => {
     email: "",
     message: "",
   });
+
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if (data && !error && !isLoading) {
+      navigate("/action/success",{
+        message:"Message sent successfully",
+        actions:[
+          {
+            label:"Go back to home page",
+            path:"/"
+          }
+        ]
+      })
+    }
+  },[data, error, isLoading, navigate])
 
   const handleNameChange = (event) => {
     event.preventDefault();
