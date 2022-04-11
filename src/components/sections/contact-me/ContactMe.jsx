@@ -45,19 +45,21 @@ const ContactMe = (props) => {
 
   const navigate = useNavigate();
 
-  useEffect(()=>{
+  useEffect(() => {
     if (data && !error && !isLoading) {
-      navigate("/action/success",{
-        message:"Message sent successfully",
-        actions:[
-          {
-            label:"Go back to home page",
-            path:"/"
-          }
-        ]
-      })
+      navigate("/action/success", {
+        state: {
+          message: "Message sent successfully",
+          actions: [
+            {
+              label: "Go back to home page",
+              path: "/",
+            },
+          ],
+        },
+      });
     }
-  },[data, error, isLoading, navigate])
+  }, [data, error, isLoading, navigate]);
 
   const handleNameChange = (event) => {
     event.preventDefault();

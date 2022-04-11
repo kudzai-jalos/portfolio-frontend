@@ -23,13 +23,15 @@ const VerifyAccount = () => {
     }
     if (error) {
       navigate("/action/failure", {
-        message: "Verifying account failed. Please contact admin.",
-        actions: [
-          {
-            label: "Go to home page",
-            path: "/",
-          },
-        ],
+        state: {
+          message: "Verifying account failed. Please contact admin.",
+          actions: [
+            {
+              label: "Go to home page",
+              path: "/",
+            },
+          ],
+        },
       });
     }
   }, [data, error, navigate]);
