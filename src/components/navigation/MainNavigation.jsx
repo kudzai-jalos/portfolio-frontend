@@ -27,7 +27,7 @@ const MainNavigation = (props) => {
   }, []);
 
   const toggleNav = () => {
-    console.log("Toggling nav to", !navShowing);
+    //console.log("Toggling nav to", !navShowing);
     setShownFirstTime(true);
     setNavShowing((state) => !state);
   };
@@ -53,14 +53,14 @@ const MainNavigation = (props) => {
 
   useEffect(() => {
     const hideNav = (event) => {
-      console.log("CLICKED", event.target);
+      //console.log("CLICKED", event.target);
 
       if (
         event.target.id !== "main-nav" &&
         event.target.id !== "hamburger" &&
         event.target.parentNode.id !== "hamburger"
       ) {
-        console.log("hiding nav", event.target);
+        //console.log("hiding nav", event.target);
         setNavShowing(false);
       }
     };
@@ -71,7 +71,7 @@ const MainNavigation = (props) => {
       document.addEventListener("click", hideNav);
       window.addEventListener("resize", hideNav);
       window.addEventListener("resize", handleResize);
-      console.log("Add event listener");
+      //console.log("Add event listener");
     }
 
     return () => {
@@ -81,7 +81,7 @@ const MainNavigation = (props) => {
       window.removeEventListener("resize", handleResize);
     };
   }, [navShowing]);
-  // console.log("NAV showing", windowWidth >= 768 || navShowing);
+  // //console.log("NAV showing", windowWidth >= 768 || navShowing);
   return (
     <nav className={classes["main-navigation"]}>
       {windowWidth <= 768 && (

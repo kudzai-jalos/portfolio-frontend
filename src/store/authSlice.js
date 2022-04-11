@@ -3,7 +3,7 @@ let token = localStorage.getItem("TOKEN");
 const tokenExpires = localStorage.getItem("TOKEN_EXPIRES");
 
 const deleteToken = () => {
-  console.log("DELETING token");
+  //console.log("DELETING token");
   localStorage.removeItem("TOKEN");
   localStorage.removeItem("TOKEN_EXPIRES");
 };
@@ -25,7 +25,7 @@ const authSlice = createSlice({
   reducers: {
     login: (state, action) => {
       const token = action.payload;
-      console.log("Login with token", token);
+      //console.log("Login with token", token);
       localStorage.setItem("TOKEN", token);
       localStorage.setItem(
         "TOKEN_EXPIRES",

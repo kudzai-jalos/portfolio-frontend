@@ -35,7 +35,7 @@ const AuthForm = (props) => {
         const token = data.token;
         dispatch(login(token));
         setTimeout(() => {
-          console.log("Session expired. Logging out...");
+          //console.log("Session expired. Logging out...");
           dispatch(logout());
         }, 1000 * 60 * 60);
         navigate("/");
@@ -76,9 +76,9 @@ const AuthForm = (props) => {
           "Content-Type": "application/json",
         },
       }).then(result=>{
-        console.log("RESOLVED",result)
+        //console.log("RESOLVED",result)
       }).catch(err=>{
-        console.log("REJECTED",err);
+        //console.log("REJECTED",err);
       });
     }
   };

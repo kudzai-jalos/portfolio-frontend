@@ -15,15 +15,15 @@ const SkillList = (props) => {
 
   useEffect(() => {
     if (data !== null) {
-      console.log(data);
+      //console.log(data);
       setSkillList(data.skills || []);
     }
-    console.log("Effect running");
+    //console.log("Effect running");
   }, [data]);
 
   useEffect(() => {
     (async () => {
-      console.log("fetching skills running");
+      //console.log("fetching skills running");
       await sendRequest("https://kudzai-jalos-api.herokuapp.com/skills");
     })();
   }, [sendRequest]);

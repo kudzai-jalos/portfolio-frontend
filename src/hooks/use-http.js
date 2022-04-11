@@ -26,7 +26,7 @@ const useHttp = () => {
       if (!headers["Content-Type"]) {
         headers["Content-Type"] = "application/json";
       }
-      console.log(options.body)
+      //console.log(options.body)
     }
     options.headers = headers;
 
@@ -34,7 +34,7 @@ const useHttp = () => {
       .then((response) => {
         if (!response.ok) {
           return response.json().then((resData) => {
-            console.log(resData)
+            //console.log(resData)
             const error = new Error(resData.message);
             error.data = resData;
             throw error;
@@ -44,12 +44,12 @@ const useHttp = () => {
       })
       .then((resData) => {
         setData(resData);
-        console.log(resData);
+        //console.log(resData);
         setIsLoading(false);
       })
       .catch((err) => {
         setIsLoading(false);
-        console.log(err);
+        //console.log(err);
         setError(err);
       });
   }, []);

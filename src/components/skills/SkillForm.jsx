@@ -38,7 +38,7 @@ const SkillForm = (props) => {
   }, [data, navigate, props.isEditing]);
 
   const handleSkillChange = (event) => {
-    console.log(event.target.value);
+    //console.log(event.target.value);
     setEnteredSkill(event.target.value);
   };
 

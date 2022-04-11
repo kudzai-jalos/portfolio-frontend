@@ -12,10 +12,10 @@ const ProjectList = (props) => {
 
   useEffect(() => {
     if (data !== null) {
-      console.log(data);
+      //console.log(data);
       setProjectList(data.projects || []);
     }
-    console.log("Effect running");
+    //console.log("Effect running");
   }, [data]);
 
   useEffect(() => {

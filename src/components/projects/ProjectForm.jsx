@@ -59,7 +59,7 @@ const ProjectForm = (props) => {
     liveUrl: "",
   });
 
-  console.log(projectFormState);
+  //console.log(projectFormState);
   useEffect(() => {
     if (data) {
       navigate("/action/success", {
