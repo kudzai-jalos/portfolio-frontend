@@ -44,12 +44,12 @@ const useHttp = () => {
       })
       .then((resData) => {
         setData(resData);
-        //console.log(resData);
+        console.log(resData);
         setIsLoading(false);
       })
       .catch((err) => {
         setIsLoading(false);
-        //console.log(err);
+        console.log(err);
         setError(err);
       });
   }, []);
