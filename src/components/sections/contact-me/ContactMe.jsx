@@ -3,34 +3,139 @@ import layoutClasses from "../../layout/Layout.module.css";
 import inputClasses from "../../ui/Input.module.css";
 import btnClasses from "../../ui/Button.module.css";
 
+import useHttp from "../../../hooks/use-http";
+import { useReducer } from "react";
+import Errors from "../../ui/Errors";
+import LoadingSpinner from "../../ui/LoadingSpinner";
+
+const SET_NAME = "SET_NAME";
+const SET_EMAIL = "SET_EMAIL";
+const SET_MESSAGE = "SET_MESSAGE";
+
+const contactFormReducer = (state, action) => {
+  switch (action.type) {
+    case SET_NAME:
+      return {
+        ...state,
+        name: action.name,
+      };
+    case SET_EMAIL:
+      return {
+        ...state,
+        email: action.email,
+      };
+    case SET_MESSAGE:
+      return {
+        ...state,
+        message: action.message,
+      };
+    default:
+      return state;
+  }
+};
+
 const ContactMe = (props) => {
+  const { data, error, isLoading, sendRequest } = useHttp();
+  const [contactFormState, dispatch] = useReducer(contactFormReducer, {
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleNameChange = (event) => {
+    event.preventDefault();
+
+    const { value } = event.target;
+
+    dispatch({
+      type: SET_NAME,
+      name: value,
+    });
+  };
+
+  const handleEmailChange = (event) => {
+    event.preventDefault();
+
+    const { value } = event.target;
+
+    dispatch({
+      type: SET_EMAIL,
+      email: value,
+    });
+  };
+
+  const handleMessageChange = (event) => {
+    event.preventDefault();
+
+    const { value } = event.target;
+
+    dispatch({
+      type: SET_MESSAGE,
+      message: value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // UX Validation
+
+    await sendRequest("http://localhost:8000/contact-me", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: contactFormState,
+    });
+  };
+
   return (
-    <section
+    <footer
       id="contact-me"
       className={`${layoutClasses.container} ${classes["container"]}`}
     >
       <h2>Contact me</h2>
-      <form
-        action="/api/contact-me"
-        method="post"
-        className={classes["contact-form"]}
-      >
+      <form onSubmit={handleSubmit} className={classes["contact-form"]}>
+        <Errors error={error} />
         <div className={inputClasses["form-control"]}>
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="name" />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={contactFormState.name}
+            onChange={handleNameChange}
+          />
         </div>
         <div className={inputClasses["form-control"]}>
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email" />
+          <input
+            type="text"
+            name="email"
+            id="email"
+            value={contactFormState.email}
+            onChange={handleEmailChange}
+          />
         </div>
         <div className={inputClasses["form-control"]}>
-          <label htmlFor="message">Name</label>
-          <textarea rows={10} name="message" id="message" />
+          <label htmlFor="message">Message</label>
+          <textarea
+            rows={10}
+            name="message"
+            id="message"
+            onChange={handleMessageChange}
+            value={contactFormState.message}
+          ></textarea>
         </div>
         <div className={classes["form-actions"]}>
           <button className={btnClasses.btn} type="submit">
-            Send
+            Send message
           </button>
+          {isLoading && (
+            <span>
+              <LoadingSpinner className={classes.spinner} />
+            </span>
+          )}
         </div>
       </form>
       <div className={classes["contact-details"]}>
@@ -106,7 +211,7 @@ const ContactMe = (props) => {
           </div>
         </div>
       </div>
-    </section>
+    </footer>
   );
 };
 

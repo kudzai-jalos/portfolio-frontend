@@ -1,13 +1,59 @@
+.btn,
+.danger-btn,
+.btn-alt {
+  font-size: 1rem;
+}
+
 .btn {
   background-color: transparent;
   color: var(--color-secondary);
   border: 2px solid var(--color-secondary);
   border-radius: 10px;
-  padding: .525rem 2rem;
-  transition: .4s ease-in-out;
+  padding: 0.525rem 2rem;
+  transition: 0.4s ease-in-out;
 }
 
-.btn:hover, .btn:active {
+.btn:hover,
+.btn:active {
   background-color: var(--color-secondary);
   color: var(--color-primary);
+}
+
+.danger-btn {
+  color: var(--color-danger);
+  border-color: var(--color-danger);
+}
+
+.danger-btn:hover,
+.danger-btn:active {
+  background-color: var(--color-danger);
+  color: var(--color-secondary);
+  border-color: var(--color-danger);
+}
+
+.btn-alt {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border: 2px solid var(--color-secondary);
+  border-radius: 10px;
+  padding: 0.525rem 2rem;
+  transition: 0.4s ease-in-out;
+}
+
+.btn-alt:hover,
+.btn-alt:active {
+  background-color: var(--color-tertiary);
+  color: var(--color-secondary);
+  border-color: var(--color-tertiary);
+  font-weight: initial;
+}
+
+btn:disabled {
+  color:#c0c0c0;
+  border-color: #c0c0c0;
+}
+
+.btn-alt:disabled {
+  background-color:#c0c0c0;
+  border-color:#c0c0c0;
 }

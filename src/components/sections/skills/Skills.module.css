@@ -1,4 +1,4 @@
-.container > h2 {
+.container {
   text-align: center;
 }
 
@@ -10,19 +10,4 @@
   justify-content: center;
   width: 80%;
   margin: 0 auto;
-}
-
-.skill {
-  margin: .5rem;
-}
-
-.skill-content {
-  display: flex;
-  flex-direction: row-reverse;
-  padding: .3rem 1.5rem;
-}
-
-.skill-content >img {
-  width: 40px;
-  margin-right: 2rem;
 }

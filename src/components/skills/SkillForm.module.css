@@ -1,0 +1,19 @@
+.page-title {
+  text-align: center;
+}
+
+.form {
+  width: 500px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+
+.form option {
+  background-color: black;
+}

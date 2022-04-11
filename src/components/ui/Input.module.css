@@ -3,14 +3,19 @@
   flex-direction: column;
 }
 
+.form-actions,
+.form-control {
+  margin-top: 1rem;
+}
 
 .form-control > input,
-.form-control > textarea {
-  margin-top: .5rem;
+.form-control > textarea,
+.form-control > select {
+  margin-top: 0.5rem;
   border-radius: 4px;
   border: 2px solid var(--color-secondary);
   background-color: transparent;
-  padding: .2rem;
+  padding: 0.2rem;
   color: var(--color-secondary);
 }
 

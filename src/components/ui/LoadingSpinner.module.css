@@ -1,0 +1,10 @@
+.spinner {
+  --size: 100px;
+  margin: auto;
+  background: none;
+  display: block;
+  shape-rendering: auto;
+  width: var(--size);
+  height: var(--size);
+  fill: var(--color-secondary);
+}

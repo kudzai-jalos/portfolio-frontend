@@ -1,0 +1,11 @@
+.skill {
+  margin: .5rem;
+  display: flex;
+  flex-direction: row-reverse;
+  padding: .3rem 1.5rem;
+}
+
+.skill > img {
+  width: 40px;
+  margin-right: 2rem;
+}

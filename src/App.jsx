@@ -1,18 +1,49 @@
-import Layout from "./components/layout/Layout";
-import AboutMe from "./components/sections/about-me/AboutMe";
-import Landing from "./components/sections/landing/Landing";
-import Projects from "./components/sections/projects/Projects";
-import Skills from "./components/sections/skills/Skills";
-import "./index.css"
+import { Route, Routes, useLocation } from "react-router-dom";
+import "./index.css";
+import Index from "./pages/Index";
+import Message from "./pages/Message";
+import EditProject from "./pages/EditProject";
+import AddSkill from "./pages/AddSkill";
+import { useEffect } from "react";
+import AdminProjects from "./pages/AdminProjects";
+import AdminSkills from "./pages/AdminSkills";
+import NotFound from "./pages/404";
+import ProjectDetails from "./pages/ProjectDetails";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import VerifyAccount from "./pages/VerifyAccount";
 
 function App() {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash) {
+
+      const element = document.querySelector(location.hash);
+
+      if (element) {
+        element.scrollIntoView();
+      }
+    }
+  }, [ location.hash]);
+
   return (
-    <Layout>
-      <Landing />
-      <AboutMe />
-      <Projects />
-      <Skills />
-    </Layout>
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="/projects/:projectId" element={<ProjectDetails />} />
+      <Route path="/auth/signup" element={<Signup />} />
+      <Route path="/auth/login" element={<Login />} />
+      <Route path="/auth/accounts/verify/:token" element={<VerifyAccount />} />
+      <Route path="/admin/add-project" element={<EditProject />} />
+      <Route path="/admin/projects" element={<AdminProjects />} />
+      <Route
+        path="/admin/edit-project/:projectId"
+        element={<EditProject isEditing />}
+      />
+      <Route path="/admin/skills" element={<AdminSkills />} />
+      <Route path="/admin/add-skill" element={<AddSkill />} />
+      <Route path="/action/:status" element={<Message />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 

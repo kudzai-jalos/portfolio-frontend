@@ -27,4 +27,18 @@
 .image-container > img {
   display: block;
   margin: 0 auto;
+  max-width: 100%;
+}
+
+@media (max-width:900px) {
+  .content,.image-container {
+    position: static;
+    text-align: center;
+    width: 100%;
+    transform: none;
+  }
+  .image-container {
+    margin-top: 4rem;
+    padding:3rem;
+  }
 }

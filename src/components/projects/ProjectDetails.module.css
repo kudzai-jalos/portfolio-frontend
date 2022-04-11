@@ -1,0 +1,47 @@
+.container {
+  width: 768px;
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.title {
+  margin: 0;
+}
+
+.description {
+  color: #ccc;
+  margin: 0;
+  margin-bottom: 1.5rem;
+}
+
+.container img {
+  max-width: 100%;
+  border-radius: 20px;
+}
+
+.links {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  display: flex;
+  transition: 0.4s ease-in-out;
+}
+
+.link > .icon {
+  width: 24px;
+  margin-right: 1rem;
+  /* transform: translateY(-50%); */
+}
+
+
+.actions {
+  margin-top: 1rem;
+}
+
+.actions button {
+  margin-right: 1rem;
+}
