@@ -10,14 +10,14 @@ import { CSSTransition } from "react-transition-group";
 const MainNavigation = (props) => {
   const [navShowing, setNavShowing] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [scrollPos, setScrollPos] = useState(document.body.scrollTop);
+  const [shrinkNav, setShrinkNav] = useState(document.body.scrollTop);
   const [shownFirstTime, setShownFirstTime] = useState(false);
   const [dropdownAppear, setDropDownAppear] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = (event) => {
-      setScrollPos(document.documentElement.scrollTop);
+      setShrinkNav(document.documentElement.scrollTop > 100);
       
     };
     document.addEventListener("scroll", handleScroll);
@@ -95,7 +95,7 @@ const MainNavigation = (props) => {
     };
   }, [navShowing]);
   return (
-    <nav className={`${classes["main-navigation"]} ${scrollPos>80 ? classes.shrink : ""}`}>
+    <nav className={`${classes["main-navigation"]} ${shrinkNav ? classes.shrink : ""}`}>
       {windowWidth <= 768 && (
         <div id="hamburger" className={classes.hamburger} onClick={toggleNav}>
           <span className={classes.bar}></span>
@@ -120,7 +120,7 @@ const MainNavigation = (props) => {
           }}
           unmountOnExit={true}
         >
-          <ul id="main-nav" className={`${classes["nav-items"]} ${scrollPos>80 ? classes.shrink : ""}`}>
+          <ul id="main-nav" className={`${classes["nav-items"]} ${shrinkNav ? classes.shrink : ""}`}>
             <NavItem>
               <NavLink className={classes["nav-link"]} to="/#">
                 Home
