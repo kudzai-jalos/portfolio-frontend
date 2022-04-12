@@ -49,7 +49,7 @@ const useHttp = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        console.log(err);
+        console.log(err.message);
         setError(err);
       });
   }, []);

@@ -93,9 +93,6 @@ const MainNavigation = (props) => {
       )}
       {(windowWidth > 768 || shownFirstTime) && (
         <CSSTransition
-          onEnter={() => {
-            console.log("Entered");
-          }}
           in={
             windowWidth >= 768 ||
             (navShowing && shownFirstTime && dropdownAppear)
