@@ -10,6 +10,7 @@ import { CSSTransition } from "react-transition-group";
 const MainNavigation = (props) => {
   const [navShowing, setNavShowing] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [shownFirstTime, setShownFirstTime] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
