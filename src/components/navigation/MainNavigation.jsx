@@ -16,6 +16,8 @@ const MainNavigation = (props) => {
   useEffect(() => {
     const handleResize = (event) => {
       setWindowWidth(window.innerWidth);
+      setShownFirstTime(false);
+      setNavShowing(false);
     };
 
     window.addEventListener("resize", handleResize);
@@ -27,6 +29,7 @@ const MainNavigation = (props) => {
 
   const toggleNav = () => {
     //console.log("Toggling nav to", !navShowing);
+    if (!shownFirstTime) setShownFirstTime(true);
     setNavShowing((state) => !state);
   };
 
@@ -64,14 +67,10 @@ const MainNavigation = (props) => {
     };
     if (navShowing) {
       document.addEventListener("click", hideNav);
-      window.addEventListener("resize", hideNav);
-      //console.log("Add event listener");
     }
 
     return () => {
-      // setShownFirstTime(false);
       document.removeEventListener("click", hideNav);
-      window.removeEventListener("resize", hideNav);
     };
   }, [navShowing]);
   // //console.log("NAV showing", windowWidth >= 768 || navShowing);
@@ -91,8 +90,12 @@ const MainNavigation = (props) => {
           enter: classes["dropdown-enter"],
           enterActive: classes["dropdown-enter-active"],
           enterDone: classes["dropdown-enter-done"],
-          exit: classes["dropdown-exit"],
-          exitActive: classes["dropdown-exit-active"],
+          exit: shownFirstTime
+            ? classes["dropdown-exit-done"]
+            : classes["dropdown-exit"],
+          exitActive: shownFirstTime
+            ? classes["dropdown-exit-done"]
+            : classes["dropdown-exit-active"],
           exitDone: classes["dropdown-exit-done"],
         }}
       >
