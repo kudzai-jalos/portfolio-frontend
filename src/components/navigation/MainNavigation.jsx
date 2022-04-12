@@ -11,13 +11,21 @@ const MainNavigation = (props) => {
   const [navShowing, setNavShowing] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [shownFirstTime, setShownFirstTime] = useState(false);
+  const [dropdownAppear, setDropDownAppear] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (shownFirstTime) {
+      setDropDownAppear(true);
+    }
+  }, [shownFirstTime]);
 
   useEffect(() => {
     const handleResize = (event) => {
       setWindowWidth(window.innerWidth);
       setShownFirstTime(false);
+      setDropDownAppear(false);
       setNavShowing(false);
     };
 
@@ -30,7 +38,7 @@ const MainNavigation = (props) => {
 
   const toggleNav = () => {
     //console.log("Toggling nav to", !navShowing);
-    if (!shownFirstTime) setShownFirstTime(true);
+    setShownFirstTime(true);
     setNavShowing((state) => !state);
   };
 
@@ -74,7 +82,6 @@ const MainNavigation = (props) => {
       document.removeEventListener("click", hideNav);
     };
   }, [navShowing]);
-  // //console.log("NAV showing", windowWidth >= 768 || navShowing);
   return (
     <nav className={classes["main-navigation"]}>
       {windowWidth <= 768 && (
@@ -84,96 +91,104 @@ const MainNavigation = (props) => {
           <span className={classes.bar}></span>
         </div>
       )}
-      <CSSTransition
-        in={windowWidth >= 768 || navShowing}
-        timeout={20000}
-        classNames={{
-          enter: classes["dropdown-enter"],
-          enterActive: classes["dropdown-enter-active"],
-          enterDone: classes["dropdown-enter-done"],
-          exit: shownFirstTime
-            ? classes["dropdown-exit-done"]
-            : classes["dropdown-exit"],
-          exitActive: shownFirstTime
-            ? classes["dropdown-exit-done"]
-            : classes["dropdown-exit-active"],
-          exitDone: classes["dropdown-exit-done"],
-        }}
-      >
-        <ul id="main-nav" className={`${classes["nav-items"]}`}>
-          <NavItem>
-            <NavLink className={classes["nav-link"]} to="/#">
-              Home
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink className={classes["nav-link"]} to="/#about-me">
-              About&nbsp;me
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink className={classes["nav-link"]} to="/#projects">
-              Projects
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink className={classes["nav-link"]} to="/#skills">
-              Skills
-            </NavLink>
-          </NavItem>
-          {/* <NavItem>
+      {(windowWidth > 768 || shownFirstTime) && (
+        <CSSTransition
+          onEnter={() => {
+            console.log("Entered");
+          }}
+          in={
+            windowWidth >= 768 ||
+            (navShowing && shownFirstTime && dropdownAppear)
+          }
+          timeout={500}
+          classNames={{
+            enter: classes["dropdown-enter"],
+            enterActive: classes["dropdown-enter-active"],
+            enterDone: classes["dropdown-enter-done"],
+            exit: classes["dropdown-exit"],
+            exitActive: classes["dropdown-exit-active"],
+            exitDone: classes["dropdown-exit-done"],
+          }}
+          unmountOnExit={true}
+        >
+          <ul id="main-nav" className={`${classes["nav-items"]}`}>
+            <NavItem>
+              <NavLink className={classes["nav-link"]} to="/#">
+                Home
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className={classes["nav-link"]} to="/#about-me">
+                About&nbsp;me
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className={classes["nav-link"]} to="/#projects">
+                Projects
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className={classes["nav-link"]} to="/#skills">
+                Skills
+              </NavLink>
+            </NavItem>
+            {/* <NavItem>
           <NavLink className={classes["nav-link"]} to="/#certifications">
             Certifications
           </NavLink>
         </NavItem> */}
-          <NavItem>
-            {isAuth ? (
-              <button className={classes["nav-link"]} onClick={handleLogout}>
-                Logout
-              </button>
-            ) : (
-              <NavLink className={`${classes["nav-link"]} `} to="/auth/login">
-                Login
+            <NavItem>
+              {isAuth ? (
+                <button className={classes["nav-link"]} onClick={handleLogout}>
+                  Logout
+                </button>
+              ) : (
+                <NavLink className={`${classes["nav-link"]} `} to="/auth/login">
+                  Login
+                </NavLink>
+              )}
+            </NavItem>
+            <NavItem className={classes.persist}>
+              <NavLink
+                className={`${classes["nav-link"]} ${btnClasses["btn"]}`}
+                to="/#contact-me"
+              >
+                Contact&nbsp;me
               </NavLink>
+            </NavItem>
+            {isAuth && (
+              <>
+                <NavItem>
+                  <NavLink className={classes["nav-link"]} to="/admin/projects">
+                    Admin projects
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink
+                    className={classes["nav-link"]}
+                    to="/admin/add-project"
+                  >
+                    Add project
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink className={classes["nav-link"]} to="/admin/skills">
+                    Admin skills
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink
+                    className={classes["nav-link"]}
+                    to="/admin/add-skill"
+                  >
+                    Add skill
+                  </NavLink>
+                </NavItem>
+              </>
             )}
-          </NavItem>
-          <NavItem className={classes.persist}>
-            <NavLink
-              className={`${classes["nav-link"]} ${btnClasses["btn"]}`}
-              to="/#contact-me"
-            >
-              Contact&nbsp;me
-            </NavLink>
-          </NavItem>
-          {isAuth && (
-            <>
-              <NavItem>
-                <NavLink className={classes["nav-link"]} to="/admin/projects">
-                  Admin projects
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  className={classes["nav-link"]}
-                  to="/admin/add-project"
-                >
-                  Add project
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink className={classes["nav-link"]} to="/admin/skills">
-                  Admin skills
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink className={classes["nav-link"]} to="/admin/add-skill">
-                  Add skill
-                </NavLink>
-              </NavItem>
-            </>
-          )}
-        </ul>
-      </CSSTransition>
+          </ul>
+        </CSSTransition>
+      )}
     </nav>
   );
 };
