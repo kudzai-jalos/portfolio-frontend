@@ -23,7 +23,11 @@ const Message = (props) => {
         <div className="center">
           {actions.map((action) => {
             return (
-              <NavLink key={action.path} className={buttonClasses.btn} to={action.path}>
+              <NavLink
+                key={action.path}
+                className={`${buttonClasses.btn} ${buttonClasses.mr}`}
+                to={action.path}
+              >
                 {action.label}
               </NavLink>
             );
