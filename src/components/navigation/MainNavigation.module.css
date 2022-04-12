@@ -8,6 +8,8 @@
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   min-height: 3.75rem;
+  transition: .4s ease-in-out;
+
 }
 
 .nav-items {
@@ -63,6 +65,11 @@
   background-color: var(--color-tertiary);
 }
 
+.main-navigation.shrink {
+  margin: 0;
+  border-radius: 0;
+}
+
 @keyframes show-dropdown {
   0% {
     opacity: 0;
@@ -74,6 +81,8 @@
     transform: translateY(0);
   }
 }
+
+
 
 @media (max-width: 768px) {
   .nav-items {
