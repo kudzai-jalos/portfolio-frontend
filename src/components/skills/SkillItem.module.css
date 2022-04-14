@@ -1,6 +1,8 @@
 .skill {
   margin: .5rem;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   flex-direction: row-reverse;
   padding: .3rem 1.5rem;
 }
