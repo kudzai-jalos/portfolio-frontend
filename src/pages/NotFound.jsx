@@ -8,7 +8,7 @@ const NotFound = () => {
   return (
     <Layout>
       <main className={layoutClasses.container}>
-        <h1>Page not found.</h1>
+        <h1 className={classes.heading}>Page not found.</h1>
         <div className={classes.actions}>
           <NavLink
             className={`${buttonClasses.btn} ${buttonClasses.mr}`}

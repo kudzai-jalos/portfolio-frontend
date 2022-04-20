@@ -21,23 +21,27 @@ const authSlice = createSlice({
   initialState: {
     isAuth: token !== null,
     token: token,
+    tokenExpires
   },
   reducers: {
     login: (state, action) => {
       const token = action.payload;
       //console.log("Login with token", token);
+      const tokenExpires = new Date().getTime() + 1000 * 60 * 60;
       localStorage.setItem("TOKEN", token);
       localStorage.setItem(
         "TOKEN_EXPIRES",
-        new Date().getTime() + 1000 * 60 * 60
+        tokenExpires
       ); //1hr
       state.token = token;
       state.isAuth = true;
+      state.tokenExpires = tokenExpires;
     },
     logout: (state) => {
       state.token = null;
       deleteToken();
       state.isAuth = false;
+      state.tokenExpires=null;
     },
   },
 });

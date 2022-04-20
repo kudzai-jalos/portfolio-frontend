@@ -5,7 +5,7 @@ import buttonClasses from "../ui/Button.module.css";
 import classes from "./AuthForm.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { login, logout } from "../../store/authSlice";
+import { login } from "../../store/authSlice";
 import Errors from "../ui/Errors";
 import LoadingSpinner from "../ui/LoadingSpinner";
 
@@ -34,14 +34,11 @@ const AuthForm = (props) => {
         // TODO store token
         const token = data.token;
         dispatch(login(token));
-        setTimeout(() => {
-          //console.log("Session expired. Logging out...");
-          dispatch(logout());
-        }, 1000 * 60 * 60);
         navigate("/");
       }
     }
   }, [data, dispatch, navigate, props.isSignup]);
+
 
   const handleEmailChange = (event) => {
     setEnteredEmail(event.target.value);
