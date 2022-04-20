@@ -49,12 +49,12 @@ const ProjectDetails = (props) => {
   }, [data, isDeleting, navigate]);
 
   useEffect(() => {
-    sendRequest("https://kudzai-jalos-api.herokuapp.com/projects/" + props.id);
+    sendRequest("/projects/" + props.id);
   }, [props.id, sendRequest]);
 
   const handleDelete = async () => {
     setIsDeleting(true);
-    await sendRequest("https://kudzai-jalos-api.herokuapp.com/admin/projects/" + project._id, {
+    await sendRequest("/admin/projects/" + project._id, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + token,

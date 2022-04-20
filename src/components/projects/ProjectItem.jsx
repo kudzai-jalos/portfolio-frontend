@@ -23,7 +23,7 @@ const ProjectItem = (props) => {
   }, [data, props.id, onDelete]);
 
   const handleDelete = async () => {
-    await sendRequest("https://kudzai-jalos-api.herokuapp.com/admin/projects/" + project._id, {
+    await sendRequest("/admin/projects/" + project._id, {
       method: "DELETE",
       headers:{
         Authorization: "Bearer " + token,

@@ -55,7 +55,7 @@ const AuthForm = (props) => {
     event.preventDefault();
     // TODO validation
     if (props.isSignup) {
-      sendRequest("https://kudzai-jalos-api.herokuapp.com/auth/signup", {
+      sendRequest("/auth/signup", {
         method: "POST",
         body: {
           email: enteredEmail,
@@ -66,7 +66,7 @@ const AuthForm = (props) => {
         },
       });
     } else {
-      sendRequest("https://kudzai-jalos-api.herokuapp.com/auth/login", {
+      sendRequest("/auth/login", {
         method: "POST",
         body: {
           email: enteredEmail,

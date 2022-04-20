@@ -56,6 +56,11 @@ button {
   margin: 0 auto;
 }
 
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }

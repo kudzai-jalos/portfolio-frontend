@@ -3,6 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 import layoutClasses from "../components/layout/Layout.module.css";
 import buttonClasses from "../components/ui/Button.module.css";
+import classes from "./Message.module.css"
 
 const Message = (props) => {
   const { state } = useLocation();
@@ -19,8 +20,8 @@ const Message = (props) => {
   return (
     <Layout>
       <main className={layoutClasses.container}>
-        <h1 className="center">{message}</h1>
-        <div className="center">
+        <h1 className={classes.heading}>{message}</h1>
+        <div className={classes.actions}>
           {actions.map((action) => {
             return (
               <NavLink

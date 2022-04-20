@@ -30,7 +30,11 @@ const useHttp = () => {
     }
     options.headers = headers;
 
-    return fetch(url, options)
+    return fetch(
+      "https://kudzai-jalos-api.herokuapp.com" + url
+      // "http://localhost:8000" + url
+    , options
+    )
       .then((response) => {
         if (!response.ok) {
           return response.json().then((resData) => {

@@ -99,7 +99,7 @@ const ContactMe = (props) => {
 
     // UX Validation
 
-    await sendRequest("https://kudzai-jalos-api.herokuapp.com/contact-me", {
+    await sendRequest("/contact-me", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -67,7 +67,8 @@ const ProjectForm = (props) => {
     if (props.isEditing) {
       setAction(FETCH_PROJECT);
       sendRequest(
-        "https://kudzai-jalos-api.herokuapp.com/projects/" + props.projectId
+        // "/projects/" + props.projectId
+        "/projects/" + props.projectId
       );
     }
   }, [props.projectId, props.isEditing, sendRequest]);
@@ -163,7 +164,8 @@ const ProjectForm = (props) => {
     // TODO validation
     setAction(SUBMIT_PROJECT);
     sendRequest(
-      "https://kudzai-jalos-api.herokuapp.com/admin/projects" +
+      // "/admin/projects" +
+      "/admin/projects" +
         (props.isEditing ? "/" + props.projectId : ""),
       {
         method: props.isEditing ? "PUT" : "POST",

@@ -1,0 +1,13 @@
+.heading {
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.actions > a {
+  margin: .5rem;
+}

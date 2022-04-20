@@ -47,7 +47,7 @@ const VerifyAccount = () => {
   }, [data, error, navigate]);
 
   useEffect(() => {
-    sendRequest("https://kudzai-jalos-api.herokuapp.com/auth/accounts/verify", {
+    sendRequest("/auth/accounts/verify", {
       method: "POST",
       body: {
         token,

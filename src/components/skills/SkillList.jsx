@@ -24,7 +24,7 @@ const SkillList = (props) => {
   useEffect(() => {
     (async () => {
       //console.log("fetching skills running");
-      await sendRequest("https://kudzai-jalos-api.herokuapp.com/skills");
+      await sendRequest("/skills");
     })();
   }, [sendRequest]);
 

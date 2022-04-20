@@ -19,7 +19,7 @@ const ProjectList = (props) => {
   }, [data]);
 
   useEffect(() => {
-    sendRequest("https://kudzai-jalos-api.herokuapp.com/projects");
+    sendRequest("/projects");
   }, [sendRequest]);
 
   const handleDelete = useCallback((id) => {

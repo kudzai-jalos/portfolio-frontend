@@ -46,7 +46,7 @@ const SkillForm = (props) => {
     event.preventDefault();
     // TODO validation
 
-    sendRequest("https://kudzai-jalos-api.herokuapp.com/admin/skills", {
+    sendRequest("/admin/skills", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
