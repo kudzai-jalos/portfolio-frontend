@@ -39,7 +39,6 @@ const AuthForm = (props) => {
     }
   }, [data, dispatch, navigate, props.isSignup]);
 
-
   const handleEmailChange = (event) => {
     setEnteredEmail(event.target.value);
   };
@@ -72,10 +71,6 @@ const AuthForm = (props) => {
         headers: {
           "Content-Type": "application/json",
         },
-      }).then(result=>{
-        //console.log("RESOLVED",result)
-      }).catch(err=>{
-        //console.log("REJECTED",err);
       });
     }
   };
