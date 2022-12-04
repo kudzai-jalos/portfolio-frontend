@@ -32,8 +32,10 @@ const useHttp = () => {
 
     return fetch(
       // "https://kudzai-jalos-api.herokuapp.com" + url
-      "https://kudzai-jalos-api.onrender.com" + url
+      // "https://kudzai-jalos-api.onrender.com" + url
+      "https://portfolio-backend-kappa.vercel.app" + url
       // "http://localhost:8000" + url
+
     , options
     )
       .then((response) => {
