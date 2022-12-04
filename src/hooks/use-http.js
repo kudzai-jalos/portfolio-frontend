@@ -31,8 +31,8 @@ const useHttp = () => {
     options.headers = headers;
 
     return fetch(
-      // "https://kudzai-jalos-api.herokuapp.com" + url
-      "http://localhost:8000" + url
+      "https://kudzai-jalos-api.herokuapp.com" + url
+      // "http://localhost:8000" + url
     , options
     )
       .then((response) => {
